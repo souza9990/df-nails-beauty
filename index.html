@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>DF Nails & Beauty | Agendamento</title>
+<style>
+:root{--bg:#090909;--panel:#141414;--panel2:#1c1a16;--gold:#d7b56d;--gold2:#f0d99c;--muted:#aaa39a;--line:#393329;--white:#f8f5ef}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -15%,#332719 0,#111 36%,#090909 70%);color:var(--white);font-family:Inter,Arial,sans-serif;min-height:100vh}
+header{padding:28px 6vw 18px;border-bottom:1px solid #30291f;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font-family:Georgia,serif;letter-spacing:2px;color:var(--gold2);font-size:clamp(20px,3vw,30px)}.brand small{display:block;font:10px Arial;letter-spacing:5px;color:#c7bda9;margin-top:6px}
+header a{color:var(--gold2);text-decoration:none;font-size:13px}
+main{max-width:1100px;margin:42px auto;padding:0 20px 60px}.intro{text-align:center;margin-bottom:34px}.eyebrow{color:var(--gold);letter-spacing:4px;text-transform:uppercase;font-size:11px}.intro h1{font:clamp(30px,5vw,48px) Georgia,serif;font-weight:400;margin:12px 0}.intro p{color:var(--muted);margin:0}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:22px}.card{background:linear-gradient(145deg,#191919,#101010);border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:0 16px 50px #0005}.card h2{font:24px Georgia,serif;color:var(--gold2);font-weight:400;margin:0 0 20px}.section{margin-bottom:25px}.section:last-child{margin-bottom:0}.label{display:block;color:#ddd2bf;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+.services{display:grid;grid-template-columns:1fr 1fr;gap:10px}.service{border:1px solid #494033;border-radius:12px;padding:15px;background:#111;cursor:pointer;text-align:left;color:var(--white);transition:.2s}.service:hover,.service.selected{border-color:var(--gold);background:#292116}.service strong{display:block;font-size:15px;margin-bottom:7px}.service span{font-size:12px;color:var(--muted)}.service b{float:right;color:var(--gold2);font-size:14px}
+.calendar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.calendar-head strong{color:var(--gold2);font-size:15px;text-transform:capitalize}.arrow{background:#242019;color:var(--gold2);border:1px solid #51432e;border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:18px}.week,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.week div{text-align:center;color:#968d7e;font-size:10px;padding:7px 0}.day{border:1px solid transparent;background:#1a1a1a;color:#eee;border-radius:9px;min-height:39px;cursor:pointer}.day:disabled{opacity:.25;cursor:not-allowed}.day:not(:disabled):hover,.day.selected{border-color:var(--gold);background:#3a2c18;color:var(--gold2)}.day.today{box-shadow:inset 0 0 0 1px #7f683f}
+.times{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.time{padding:10px 4px;background:#191919;border:1px solid #484033;color:#eee;border-radius:8px;cursor:pointer}.time.selected,.time:hover{background:#3a2c18;border-color:var(--gold);color:var(--gold2)}.hint{color:var(--muted);font-size:12px;line-height:1.5}.field{width:100%;background:#0d0d0d;border:1px solid #494033;border-radius:9px;padding:13px;color:white;outline:none;margin-bottom:10px}.field:focus{border-color:var(--gold)}textarea.field{resize:vertical;min-height:75px}.summary{background:#211b12;border:1px solid #5b492d;border-radius:12px;padding:16px;margin:16px 0}.summary div{display:flex;justify-content:space-between;gap:12px;padding:5px 0;font-size:13px}.summary span{color:#b9ae9b}.summary strong{color:var(--gold2);text-align:right}.cta{width:100%;border:0;border-radius:10px;padding:15px;background:linear-gradient(100deg,#b18a43,#f0d99c);color:#17120a;font-weight:800;font-size:14px;letter-spacing:.5px;cursor:pointer}.cta:disabled{opacity:.4;cursor:not-allowed}.notice{font-size:11px;color:#a9a092;line-height:1.6;margin-top:12px}.hours{margin-top:22px;border-top:1px solid #393329;padding-top:16px}.hours p{font-size:12px;color:#b9b1a4;margin:6px 0}.hours strong{color:var(--gold2)}footer{text-align:center;padding:24px;color:#857d70;font-size:11px;border-top:1px solid #2a251e}
+
+.profile{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center}
+.profile-photo{width:110px;height:110px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;background:#211b12}
+.upload-label{display:inline-block;padding:10px 13px;border:1px solid var(--gold);border-radius:9px;color:var(--gold2);font-size:12px;cursor:pointer;margin-top:8px}
+.upload-label input{display:none}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid #51432e;background:#211b12}.gallery-empty{grid-column:1/-1;color:var(--muted);font-size:13px;padding:18px;border:1px dashed #51432e;border-radius:10px;text-align:center}
+.review{padding:13px 0;border-bottom:1px solid #393329}.review:last-child{border:0}.stars{color:var(--gold2);letter-spacing:3px}.review p{margin:6px 0 0;color:#c8c0b3;font-size:13px;line-height:1.5}
+@media(max-width:760px){header{padding:20px;align-items:flex-start}main{margin:28px auto}.layout{grid-template-columns:1fr}.card{padding:20px}.times{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="brand">DF NAILS & BEAUTY<small>BELEZA • CUIDADO • ELEGÂNCIA</small></div><a href="#agendar">AGENDAR HORÁRIO ↗</a></header>
+<main>
+<section class="intro"><div class="eyebrow">Seu momento de cuidado</div><h1>Agende sua experiência</h1><p>Escolha seu serviço, a melhor data e um horário para você.</p></section>
+<div class="layout" id="agendar">
+<section class="card">
+<h2>1. Escolha o serviço</h2>
+<div class="section"><span class="label">Serviços disponíveis</span>
+<div class="services" id="services">
+<button class="service selected" data-name="Mão" data-price="40" data-duration="60"><strong>Mão <b>R$ 40</b></strong><span>⏱ 1 hora</span></button>
+<button class="service" data-name="Pé" data-price="40" data-duration="60"><strong>Pé <b>R$ 40</b></strong><span>⏱ 1 hora</span></button>
+<button class="service" data-name="Pé e mão" data-price="70" data-duration="100"><strong>Pé e mão <b>R$ 70</b></strong><span>⏱ 1h 40min</span></button>
+<button class="service" data-name="Spa dos pés" data-price="100" data-duration="150"><strong>Spa dos pés <b>R$ 100</b></strong><span>⏱ 2h 30min</span></button>
+</div></div>
+<div class="section"><span class="label">2. Escolha a data</span>
+<div class="calendar-head"><button class="arrow" id="prev" aria-label="Mês anterior">‹</button><strong id="monthLabel"></strong><button class="arrow" id="next" aria-label="Próximo mês">›</button></div>
+<div class="week"><div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div><div>QUI</div><div>SEX</div><div>SÁB</div></div><div class="days" id="days"></div>
+<p class="hint">Atendimento: terça e quarta, das 09h às 18h; sábado, das 08h às 18h. Outros dias não disponíveis.</p>
+</div>
+<div class="section"><span class="label">3. Escolha o horário</span><div class="times" id="times"><p class="hint">Selecione uma data disponível para ver os horários.</p></div></div>
+</section>
+<section class="card">
+<h2>Finalize seu agendamento</h2>
+<div class="section"><span class="label">Seus dados</span>
+<input class="field" id="clientName" placeholder="Seu nome completo" autocomplete="name">
+<input class="field" id="clientPhone" placeholder="Seu WhatsApp com DDD" inputmode="tel">
+<textarea class="field" id="notes" placeholder="Observações (opcional)"></textarea>
+</div>
+<div class="summary">
+<div><span>Serviço</span><strong id="sumService">Mão</strong></div>
+<div><span>Data</span><strong id="sumDate">Selecione uma data</strong></div>
+<div><span>Horário</span><strong id="sumTime">Selecione um horário</strong></div>
+<div><span>Duração</span><strong id="sumDuration">1 hora</strong></div>
+<div><span>Valor</span><strong id="sumPrice">R$ 40,00</strong></div>
+</div>
+<button class="cta" id="book" disabled>ENVIAR PEDIDO PELO WHATSAPP</button>
+<p class="notice">Ao clicar, o WhatsApp será aberto com os dados do seu pedido para a confirmação com a profissional. O horário só estará confirmado após a resposta da DF Nails & Beauty.</p>
+<div class="hours"><span class="label">Profissional e endereço</span><p><strong>Flávia Lino</strong> · Manicure</p><p>Avenida Luiz Santos Silva, 296 — Jardim Leme, Taboão da Serra - SP</p><p>Cancelamentos ou remarcações: avise com pelo menos 3 horas de antecedência.</p></div>
+</section>
+</div>
+</main>
+<footer>DF NAILS & BEAUTY · Taboão da Serra - SP</footer>
+<script>
+const WA='5511913719756';
+const services=[...document.querySelectorAll('.service')];
+let service={name:'Mão',price:40,duration:60}, selectedDate=null, selectedTime=null;
+let shown=new Date(); shown.setDate(1);
+const $=id=>document.getElementById(id);
+const money=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const durationText=m=>m===60?'1 hora':`${Math.floor(m/60)}h${m%60?` ${m%60}min`:''}`;
+services.forEach(btn=>btn.addEventListener('click',()=>{services.forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');service={name:btn.dataset.name,price:+btn.dataset.price,duration:+btn.dataset.duration};selectedTime=null;renderTimes();updateSummary()}));
+function availableDay(date){const d=date.getDay();return d===2||d===3||d===6}
+function renderCalendar(){
+ const y=shown.getFullYear(),m=shown.getMonth();$('monthLabel').textContent=new Intl.DateTimeFormat('pt-BR',{month:'long',year:'numeric'}).format(shown);
+ const first=new Date(y,m,1).getDay(),count=new Date(y,m+1,0).getDate(),today=new Date();today.setHours(0,0,0,0);
+ $('days').innerHTML='';
+ for(let i=0;i<first;i++){const blank=document.createElement('div');$('days').append(blank)}
+ for(let n=1;n<=count;n++){const date=new Date(y,m,n);const b=document.createElement('button');b.className='day';b.textContent=n;
+ const past=date<today;b.disabled=past||!availableDay(date);if(date.getTime()===today.getTime())b.classList.add('today');
+ if(selectedDate&&date.toDateString()===selectedDate.toDateString())b.classList.add('selected');
+ b.addEventListener('click',()=>{selectedDate=date;selectedTime=null;renderCalendar();renderTimes();updateSummary()});$('days').append(b)}
+}
+function renderTimes(){
+ const wrap=$('times');wrap.innerHTML='';
+ if(!selectedDate){wrap.innerHTML='<p class="hint">Selecione uma data disponível para ver os horários.</p>';return}
+ const open=selectedDate.getDay()===6?8:9,close=18,now=new Date();
+ const booked=JSON.parse(localStorage.getItem('dfnails_bookings')||'[]');
+ for(let mins=open*60;mins+service.duration<=close*60;mins+=30){
+  const h=Math.floor(mins/60),m=mins%60,dt=new Date(selectedDate);dt.setHours(h,m,0,0);
+  if(dt<=now)continue;
+  const end=mins+service.duration;
+  const conflict=booked.some(x=>x.date===selectedDate.toISOString().slice(0,10) && mins < x.end && end > x.start);
+  if(conflict)continue;
+  const b=document.createElement('button');b.className='time';b.textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+  if(selectedTime===b.textContent)b.classList.add('selected');
+  b.addEventListener('click',()=>{selectedTime=b.textContent;renderTimes();updateSummary()});wrap.append(b)
+ }
+ if(!wrap.children.length)wrap.innerHTML='<p class="hint">Não há horários disponíveis para esse serviço nesta data. Escolha outro dia.</p>';
+}
+function updateSummary(){
+ $('sumService').textContent=service.name;$('sumDate').textContent=selectedDate?selectedDate.toLocaleDateString('pt-BR'):'Selecione uma data';
+ $('sumTime').textContent=selectedTime||'Selecione um horário';$('sumDuration').textContent=durationText(service.duration);$('sumPrice').textContent=money(service.price);
+ $('book').disabled=!(selectedDate&&selectedTime&&$('clientName').value.trim()&&$('clientPhone').value.trim())
+}
+$('prev').onclick=()=>{shown.setMonth(shown.getMonth()-1);renderCalendar()};
+$('next').onclick=()=>{shown.setMonth(shown.getMonth()+1);renderCalendar()};
+['clientName','clientPhone'].forEach(id=>$(id).addEventListener('input',updateSummary));
+$('book').onclick=()=>{
+ const name=$('clientName').value.trim(),phone=$('clientPhone').value.trim(),notes=$('notes').value.trim();
+ const msg=`Olá, Flávia! Gostaria de solicitar um agendamento na DF Nails & Beauty.%0A%0A*Nome:* ${encodeURIComponent(name)}%0A*WhatsApp:* ${encodeURIComponent(phone)}%0A*Serviço:* ${encodeURIComponent(service.name)}%0A*Data:* ${encodeURIComponent(selectedDate.toLocaleDateString('pt-BR'))}%0A*Horário:* ${encodeURIComponent(selectedTime)}%0A*Duração:* ${encodeURIComponent(durationText(service.duration))}%0A*Valor:* ${encodeURIComponent(money(service.price))}%0A*Observações:* ${encodeURIComponent(notes||'Nenhuma')}%0A%0APoderia confirmar a disponibilidade?`;
+ const bookings=JSON.parse(localStorage.getItem('dfnails_bookings')||'[]');
+ const start=Number(selectedTime.slice(0,2))*60+Number(selectedTime.slice(3,5));
+ bookings.push({date:selectedDate.toISOString().slice(0,10),start,end:start+service.duration,service:service.name});
+ localStorage.setItem('dfnails_bookings',JSON.stringify(bookings));
+ window.open(`https://wa.me/${WA}?text=${msg}`,'_blank','noopener');
+ selectedTime=null;renderTimes();updateSummary();
+};
+renderCalendar();updateSummary();
+function readImage(file,callback){const reader=new FileReader();reader.onload=()=>callback(reader.result);reader.readAsDataURL(file)}
+$('proUpload').addEventListener('change',e=>{const f=e.target.files[0];if(f)readImage(f,src=>{localStorage.setItem('dfnails_profile_photo',src);$('proPhoto').src=src})});
+const savedPro=localStorage.getItem('dfnails_profile_photo');if(savedPro)$('proPhoto').src=savedPro;
+function renderGallery(){const items=JSON.parse(localStorage.getItem('dfnails_gallery')||'[]');const g=$('gallery');g.innerHTML='';if(!items.length){g.innerHTML='<div class="gallery-empty">As fotos dos trabalhos aparecerão aqui.</div>';return}items.forEach(src=>{const img=document.createElement('img');img.src=src;img.alt='Trabalho de manicure';g.append(img)})}
+$('workUpload').addEventListener('change',e=>{const files=[...e.target.files];const items=JSON.parse(localStorage.getItem('dfnails_gallery')||'[]');let remaining=files.length;files.forEach(file=>readImage(file,src=>{items.push(src);remaining--;if(!remaining){localStorage.setItem('dfnails_gallery',JSON.stringify(items));renderGallery()}}))});renderGallery();
+function renderReviews(){const items=JSON.parse(localStorage.getItem('dfnails_reviews')||'[]');const root=$('reviews');root.innerHTML='';if(!items.length){root.innerHTML='<p class="hint">Ainda não há avaliações publicadas.</p>';return}items.slice().reverse().forEach(r=>{const div=document.createElement('div');div.className='review';const stars=document.createElement('div');stars.className='stars';stars.textContent='★'.repeat(r.stars)+'☆'.repeat(5-r.stars);const who=document.createElement('strong');who.textContent=r.name;const p=document.createElement('p');p.textContent=r.text;div.append(stars,who,p);root.append(div)})}
+$('sendReview').addEventListener('click',()=>{const name=$('reviewName').value.trim(),text=$('reviewText').value.trim();if(!name||!text){alert('Preencha seu nome e sua avaliação.');return}const items=JSON.parse(localStorage.getItem('dfnails_reviews')||'[]');items.push({name,stars:+$('reviewStars').value,text});localStorage.setItem('dfnails_reviews',JSON.stringify(items));$('reviewName').value='';$('reviewText').value='';renderReviews()});renderReviews();
+
+</script>
+</body></html>
